@@ -7,7 +7,7 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                echo "Build"
+                echo "Building"
             }
         }
         stage('Test') {
@@ -17,8 +17,19 @@ pipeline {
         }
         stage('Deploy') {
             steps {
-                echo "Deploy"
+                echo "Deploying"
             }
+        }
+    }
+    post{
+        always{
+            echo 'I will always say Hello agian!'
+        }
+        success{
+            echo 'i am success'
+        }
+        failure{
+            echo 'i am failure'
         }
     }
 }

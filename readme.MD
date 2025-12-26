@@ -1,4 +1,4 @@
-### MASTER 
+### JENKINS MASTER SETUP
 ```
 sudo curl -o /etc/yum.repos.d/jenkins.repo \
     https://pkg.jenkins.io/redhat-stable/jenkins.repo
@@ -49,5 +49,12 @@ sudo xfs_growfs /home
 sudo yum install fontconfig java-21-openjdk -y
 ```
 
+### Plugins
+* Stage view
+
+### Master Agent Architecture
+* Create credentials to connet agent
+* Install java in agent
+* Select Non Verifiction strategy
 
 
