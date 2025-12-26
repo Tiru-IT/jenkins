@@ -6,7 +6,7 @@ pipeline {
         }
     }
     environment {
-        COUESR = "Jenkins"
+        COURSE = "Jenkins"
     }
     
     // build
