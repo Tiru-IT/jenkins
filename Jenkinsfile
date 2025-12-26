@@ -9,7 +9,8 @@ pipeline {
         COURSE = "Jenkins"
     }
     options {
-        timeout(time: 10, unit: 'SECONDS') 
+        timeout(time: 10, unit: 'MINUTES') 
+        disableConcurrentBuilds()
     }
     
     // build
@@ -58,7 +59,7 @@ pipeline {
             echo 'i am failure'
         }
         aborted {
-            echo 'pipeline is abortec'
+            echo 'pipeline is aborted'
         }
     }
 }
