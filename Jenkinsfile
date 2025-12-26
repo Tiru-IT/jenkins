@@ -1,39 +1,56 @@
 pipeline {
+    // pre-build
     agent {
         node {
             label 'AGENT-1'
         }
     }
+    environment {
+        COUESR = "Jenkins"
+    }
+    
+    // build
     stages {
         stage('Build') {
             steps {
-                script{
+                script {
                     sh """
                         echo "Building"
+                        echo $COURSE
+                        env
                     """
                 }
             }
         }
         stage('Test') {
             steps {
-                echo "Testing"
+                script {
+                    sh """
+                        echo "Testing"
+                    """
+                }
             }
         }
         stage('Deploy') {
             steps {
-                echo "Deploying"
+                script {
+                    sh """
+                        echo "Deploying"
+                    """
+                }
             }
         }
     }
-    post{
-        always{
+    // post-build
+    post {
+        always {
             echo 'I will always say Hello agian!'
             cleanWs() // clean the workspace 
         }
-        success{
+        success {
             echo 'i am success'
         }
-        failure{
+        failure {
             echo 'i am failure'
         }
     }
