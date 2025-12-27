@@ -1,29 +1,6 @@
-### JENKINS MASTER SETUP
-```
-sudo curl -o /etc/yum.repos.d/jenkins.repo \
-    https://pkg.jenkins.io/redhat-stable/jenkins.repo
-```
-```
-sudo rpm --import https://pkg.jenkins.io/redhat-stable/jenkins.io-2023.key
-```
-# Add required dependencies for the jenkins package
-```
-sudo yum install fontconfig java-21-openjdk -y
-```
+# JENKINS SETUP
 
-```
-sudo yum install jenkins -y
-```
-
-```
-sudo systemctl daemon-reload
-```
-
-```
-sudo systemctl start jenkins
-sudo systemctl enable jenkins
-```
-
+### PRTITION THE DISK
 ```
 lsblk
 sudo growpart /dev/nvme0n1 4
@@ -32,21 +9,24 @@ sudo lvextend -L +10G /dev/mapper/RootVG-rootVol
 sudo xfs_growfs /
 sudo xfs_growfs /home
 ```
-
-
-# in agent we install java also
+### INSTALL COMMANDS FROM JENKINS OFFCIAL DOC
 ```
-sudo growpart /dev/nvme0n1 4
-sudo lvextend -L +20G /dev/mapper/RootVG-homeVol
-sudo lvextend -L +10G /dev/mapper/RootVG-rootVol
-sudo xfs_growfs /
-sudo xfs_growfs /home
+sudo curl -o /etc/yum.repos.d/jenkins.repo \
+    https://pkg.jenkins.io/redhat-stable/jenkins.repo
 ```
-
-
-# in agent we install java also
+```
+sudo rpm --import https://pkg.jenkins.io/redhat-stable/jenkins.io-2023.key
+```
 ```
 sudo yum install fontconfig java-21-openjdk -y
+```
+```
+sudo yum install jenkins -y
+```
+```
+sudo systemctl daemon-reload
+sudo systemctl start jenkins
+sudo systemctl enable jenkins
 ```
 
 ### Plugins
@@ -56,5 +36,25 @@ sudo yum install fontconfig java-21-openjdk -y
 * Create credentials to connet agent
 * Install java in agent
 * Select Non Verifiction strategy
+
+### AGENT 
+
+### PRTITION THE DISK
+
+```
+growpart /dev/nvme0n1 4
+
+lvextend -L +10G /dev/mapper/RootVG-varVol
+lvextend -L +10G /dev/mapper/RootVG-rootVol
+lvextend -l +100%FREE /dev/mapper/RootVG-homeVol
+
+xfs_growfs /
+xfs_growfs /var
+xfs_growfs /home
+```
+### in agent we install java also
+```
+sudo yum install fontconfig java-21-openjdk -y
+```
 
 
