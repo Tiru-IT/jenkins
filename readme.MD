@@ -1,6 +1,6 @@
 # JENKINS SETUP
 
-### PRTITION THE DISK
+### PARTITION THE DISK
 ```
 lsblk
 sudo growpart /dev/nvme0n1 4
@@ -39,7 +39,7 @@ sudo systemctl enable jenkins
 
 ### AGENT 
 
-### PRTITION THE DISK
+### PARTITION THE DISK
 
 ```
 growpart /dev/nvme0n1 4
