@@ -9,7 +9,7 @@ pipeline {
         COURSE = "Jenkins"
     }
     options {
-        timeout(time: 10, unit: 'MINUTES') 
+        timeout(time: 10, unit: 'MINUTES') // if the pipeline build time more aborted
         disableConcurrentBuilds()  // step by step build
     }
     parameters {
