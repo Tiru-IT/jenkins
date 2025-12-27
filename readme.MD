@@ -2,12 +2,15 @@
 
 ### PARTITION THE DISK
 ```
-lsblk
-sudo growpart /dev/nvme0n1 4
-sudo lvextend -L +20G /dev/mapper/RootVG-homeVol
-sudo lvextend -L +10G /dev/mapper/RootVG-rootVol
-sudo xfs_growfs /
-sudo xfs_growfs /home
+growpart /dev/nvme0n1 4
+
+lvextend -L +10G /dev/mapper/RootVG-varVol
+lvextend -L +10G /dev/mapper/RootVG-rootVol
+lvextend -l +100%FREE /dev/mapper/RootVG-homeVol
+
+xfs_growfs /
+xfs_growfs /var
+xfs_growfs /home
 ```
 ### INSTALL COMMANDS FROM JENKINS OFFCIAL DOC
 ```
