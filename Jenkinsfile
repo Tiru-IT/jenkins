@@ -34,6 +34,7 @@ pipeline {
                          echo "Hello ${params.PERSON}"
                         echo "Biography: ${params.BIOGRAPHY}"
                         echo "Toggle: ${params.DEPLOY}"
+                        # echo "Toggle: ${params.TOGGLE}"
                         echo "Choice: ${params.CHOICE}"
                         echo "Password: ${params.PASSWORD}"
                     """
@@ -59,7 +60,7 @@ pipeline {
             //     }
             // }
             when { 
-                expression { "$params.DEPLOY" == "true" }
+                expression { "$params.DEPLOY" == "true" } // it's conddition run or not
             }
             steps {
                 script {
