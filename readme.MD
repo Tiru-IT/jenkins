@@ -40,7 +40,7 @@ sudo systemctl enable jenkins
 * Install java in agent
 * Select Non Verifiction strategy
 
-### AGENT 
+# AGENT 
 
 ### PARTITION THE DISK
 
